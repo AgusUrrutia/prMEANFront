@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient , HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { People } from './people';
 import { Observable } from 'rxjs';
@@ -12,11 +12,22 @@ export class ServicePeopleService {
     private http: HttpClient
   ) {
 
-    this.URL = 'https://prmean-mgsb-dev.fl0.io/get-people';
+    this.URL = 'https://prmean-mgsb-dev.fl0.io';
    }
 
-  public getPeople() : Observable<People[]>{
-    return this.http.get<People[]>(this.URL);
+  getPeople() : Observable<People[]>{
+    return this.http.get<People[]>(`${this.URL}/get-people`);
+  }
+
+  sendUser(listUser:{}) {
+    console.log(listUser);
+    
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+
+    return this.http.post(`${this.URL}/post-people`,listUser,{headers})
   }
 
 }
