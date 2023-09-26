@@ -2,33 +2,33 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ServicePeopleService } from '../service-people.service';
 import { SessionService } from '../session.service';
-
-
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class LoginComponent {
-  public listUser:any;
-  private userLogin:any;
-  private token:Object | undefined;
+export class RegisterComponent {
 
+
+  public listUser:any;
   constructor( 
     private peopleService: ServicePeopleService,
     private sessionService: SessionService
     ){
+
     this.listUser = {
       nameUser:null,
       password:null,
+      email:null,
+      role:'user'
     }
   }
 
-  login(f:NgForm){
+
+
+  register(f:NgForm){
     console.log("Envio del formulario");
-    this.peopleService.login(this.listUser).subscribe(rt=> 
-        this.sessionService.setToken(rt)
-    );
+    this.peopleService.register(this.listUser).subscribe(rt=> this.sessionService.setToken(rt));
     this.sessionService.setULogin(localStorage.getItem('nameUser'));
   }
 
@@ -37,4 +37,6 @@ export class LoginComponent {
       this.sessionService.setULogin(localStorage.getItem('nameUser'));
     }
   }
+
+
 }

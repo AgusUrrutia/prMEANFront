@@ -1,0 +1,18 @@
+<div class="m-a form-login">
+    <form (ngSubmit)="register(f)" #f="ngForm">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Nombre de usuario</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="nameUser" [(ngModel)]="listUser.nameUser">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" name="password" [(ngModel)]="listUser.password">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" [(ngModel)]="listUser.email">
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+    <label class="form-label">Ya tienes una cuenta? <a href="/login">Ingresá</a></label>
+</div>

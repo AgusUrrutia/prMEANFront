@@ -1,17 +1,22 @@
-<table class="table">
+<table class="table text-center" >
     <thead>
       <tr>
         <th scope="col">id</th>
-        <th scope="col">nombre</th>
-        <th scope="col">apellido</th>
-        <th scope="col">img?</th>
+        <th scope="col">Nombre de usuario</th>
+        <th scope="col">Contraseña</th>
+        <th scope="col">-</th>
       </tr>
     </thead>
-    <tbody>
-      <tr *ngFor="let people of RT">
+    <tbody *ngFor="let people of RT">
+      <tr  *ngIf="people.nameUser !== userLogin">
         <th scope="row">{{people._id}}</th>
-        <td>{{people.nombre}}</td>
-        <td>{{people.apellido}}</td>
+        <td>{{people.nameUser}}</td>
+        <td>{{people.password}}</td>
+        <td>
+          <button type="button" class="btn btn-success" *ngIf="people.role !== 'Admin'">Hacer Admin</button>
+          <button type="button" class="btn btn-warning">Editar</button>
+          <button type="button" class="btn btn-danger">Eliminar</button>
+        </td>
       </tr>
     </tbody>
   </table>

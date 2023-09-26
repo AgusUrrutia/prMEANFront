@@ -1,5 +1,6 @@
 export interface People {
-    nombre: string,
-    apellido: string
+    nameUser: string,
+    password: string,
+    role: string,
     _id:string
 }

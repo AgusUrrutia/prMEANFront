@@ -1,14 +1,15 @@
 
 <div class="m-a form-login">
-    <form (ngSubmit)="saveUser(f)" #f="ngForm">
+    <form (ngSubmit)="login(f)" #f="ngForm">
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">nombre</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="nombre" [(ngModel)]="listUser.nombre">
+            <label for="exampleInputEmail1" class="form-label">Nombre de Usuario</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="nombre" [(ngModel)]="listUser.nameUser">
         </div>
         <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">apellido</label>
-            <input type="text" class="form-control" id="exampleInputPassword1" name="apellido" [(ngModel)]="listUser.apellido">
+            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" name="password" [(ngModel)]="listUser.password">
         </div>
         <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
+    <label class="form-label">Aún no tienes una cuenta? <a href="/register">Registrate</a></label>
 </div>

@@ -10,13 +10,19 @@ import { TableComponent } from './table/table.component';
 import { HttpClientModule} from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ErrPageComponent } from './err-page/err-page.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TableComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent,
+    ErrPageComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
