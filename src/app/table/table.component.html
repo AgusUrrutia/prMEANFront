@@ -14,9 +14,38 @@
         <td>{{people.password}}</td>
         <td>
           <button type="button" class="btn btn-success" *ngIf="people.role !== 'Admin'">Hacer Admin</button>
-          <button type="button" class="btn btn-warning">Editar</button>
+          <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="completeEdit(people._id)">Editar</button>
           <button type="button" class="btn btn-danger">Eliminar</button>
         </td>
       </tr>
     </tbody>
   </table>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar a usuario "{{listUser.nameUser}}"</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label  class="form-label">ID</label> <br>
+            <label  class="form-label">{{listUser._id}}</label>
+        </div>
+          <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Nombre de Usuario</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="nombre" [(ngModel)]="listUser.nameUser" value="listUser.nameUser">
+          </div>
+          <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+              <input type="text" class="form-control" id="exampleInputPassword1" name="password" [(ngModel)]="listUser.password" value="listUser.password">
+          </div>
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Enviar</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
