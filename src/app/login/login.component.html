@@ -4,12 +4,17 @@
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Nombre de Usuario</label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="nombre" [(ngModel)]="listUser.nameUser">
+            <p class="msgErr" *ngIf="msgErr === 'User'">*Usuario no valido*</p>
         </div>
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Contraseña</label>
             <input type="password" class="form-control" id="exampleInputPassword1" name="password" [(ngModel)]="listUser.password">
+            <p class="msgErr" *ngIf="msgErr === 'Password'">*Contraseña invalida*</p>
         </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
+        <button type="submit" class="btn btn-primary" *ngIf="!loader">Enviar</button>
+        <div class="spinner-border text-primary" role="status" *ngIf="loader">
+            <span class="visually-hidden">Cargando...</span>
+        </div>
     </form>
     <label class="form-label">Aún no tienes una cuenta? <a href="/register">Registrate</a></label>
 </div>

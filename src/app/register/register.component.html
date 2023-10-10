@@ -1,4 +1,5 @@
 <div class="m-a form-login">
+    <input type="file" (change)="uploadImage($event)">
     <form (ngSubmit)="register(f)" #f="ngForm">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Nombre de usuario</label>

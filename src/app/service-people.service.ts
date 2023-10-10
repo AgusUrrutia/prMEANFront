@@ -44,7 +44,6 @@ export class ServicePeopleService {
       'Content-Type': 'application/json'
     })
     return this.http.post(`${this.URL}/login-people`,listUser,{headers})
-
   }
   
 

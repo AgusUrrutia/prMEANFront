@@ -1,0 +1,15 @@
+
+
+.imgCenter{
+    display: inline-block;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50%;  
+}
+.imgCenter img{
+    width: 100%;
+    height: auto;
+    margin-top: -40px;
+}
