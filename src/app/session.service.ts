@@ -72,6 +72,12 @@ export class SessionService {
       let us: People = {nameUser : rt.data.nameUser, password : rt.data.password, role : rt.data.role, _id : rt.data._id, email : rt.data.email};
       return us;
     }
+    if(rt.msg === "¡¡¡User invalid!!!"){
+      this.setMsgErr("User");
+    }
+    if(rt.msg === "¡¡¡Password invalid!!!"){
+      this.setMsgErr("Password");
+    }
     return null;
   }
 
@@ -89,6 +95,8 @@ export class SessionService {
       this.setURole(this.token.data.role);
       this.redirect();
     }
+    console.log(rt.msg);
+    
     if(rt.msg === "¡¡¡User invalid!!!"){
       this.setMsgErr("User");
     }

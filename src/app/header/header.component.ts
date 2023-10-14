@@ -18,6 +18,8 @@ export class HeaderComponent {
   public loader: boolean = false;
   public listUser:any;
   private img: any;
+  public succes: boolean = false;
+  public msgErr:any;
   public userEdit: People | null = {
     nameUser : "",
     password: "",
@@ -40,6 +42,10 @@ export class HeaderComponent {
       nameUser:null,
       password:null,
     }
+    this.sessionService.getMsgErr().subscribe((msg) => {
+      this.msgErr = msg
+      console.log(msg)
+    });
   }
 
   logOut(){
@@ -66,29 +72,34 @@ export class HeaderComponent {
   }
   upload(e:NgForm){
     console.log(this.userEdit);
-    
+    this.loader = true;
     if(this.userEdit != null){
       this.peopleService.editUser(this.userEdit).subscribe((rt)=>{ 
         this.sessionService.setToken(rt)
         console.log(rt)
-      });
-      this.sessionService.setULogin(localStorage.getItem('nameUser'));
-      if(this.choseImage){
-        let name = e.form.controls['nameUser'].value;
-      
-        this.img = this.renameFile(this.img,name);
-        console.log(this.img.name);
+        this.sessionService.setULogin(localStorage.getItem('nameUser'));
+        if(this.choseImage){
+          let name = e.form.controls['nameUser'].value;
         
-        const imgRef = ref(this.storage, `images/${this.img.name}`);
-        uploadBytes(imgRef,this.img)
-        .then(response => console.log(response))
-        .catch(err=>console.log(err))
-      }
+          this.img = this.renameFile(this.img,name);
+          console.log(this.img.name);
+          
+          const imgRef = ref(this.storage, `images/${this.img.name}`);
+          uploadBytes(imgRef,this.img)
+          .then(response => console.log(response))
+          .catch(err=>console.log(err))
+        }
+        this.loader = false;
+        this.editForm = false;
+        this.editU = false;
+        this.succes = true;
+      });
     }
   }
 
   reqUser(f:NgForm){
     // this.listUser.password = f.controls[0];
+    this.msgErr = "";
     this.listUser.nameUser = this.userLogin;
     console.log("Envio del formulario");
     console.log(this.listUser.nameUser);
@@ -101,8 +112,10 @@ export class HeaderComponent {
         this.editU = false;
         this.loader = false;
         this.editForm = true;
+      }else{
+        console.log(rt);
+        this.loader = false;
       }
-      console.log(rt);
     });
   }
   
@@ -117,4 +130,11 @@ export class HeaderComponent {
     }
   }
 
+
+
+  cleanAll(){
+    this.editU = false;
+    this.loader = false;
+    this.editForm = false;
+  }
 }

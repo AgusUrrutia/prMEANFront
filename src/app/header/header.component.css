@@ -38,3 +38,9 @@
     display: flex;
     justify-content: space-between;
 }
+.msgSuccess{
+    color: rgb(34, 214, 34);
+}
+.msgError{
+    color: red;
+}
