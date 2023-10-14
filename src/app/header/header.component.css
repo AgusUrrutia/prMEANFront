@@ -1,3 +1,16 @@
+.imgModalUser{
+    display: inline-block;
+    position: relative;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 50%;  
+}
+.imgModalUser img{
+    width: 100%;
+    height: auto;
+    /* margin-top: -40%; */
+}
 
 
 .imgCenter{
@@ -11,5 +24,17 @@
 .imgCenter img{
     width: 100%;
     height: auto;
-    margin-top: -40px;
+    margin-top: -40%;
+}
+.imgLogin{
+    display: flex;
+    width: 100%;
+}
+.btnLogin{
+    width: 4%;
+}
+
+.editU{
+    display: flex;
+    justify-content: space-between;
 }

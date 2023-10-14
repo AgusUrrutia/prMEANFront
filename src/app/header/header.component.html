@@ -21,9 +21,9 @@
             <a class="nav-link active" aria-current="page" href="/login">Login</a>
           </li>
         </ul>
-        <button class="btn btn-outline-light" type="submit" *ngIf="userLogin != ''" (click)="logOut()" >LogOut</button>
-        <button class="btn btn-outline-light" type="submit" *ngIf="userLogin != ''">
-          <img src="../images/usuario.png" *ngIf="userLogin != ''"alt="">
+        
+        <button class="btn btn-outline-light btnLogin" type="button" data-bs-toggle="modal" data-bs-target="#modalLoginUser" *ngIf="userLogin != ''">
+          <img src="./assets/usuario.png"alt="imagen" class="imgLogin">
         </button>
         
         <form class="d-flex" role="search">
@@ -33,3 +33,68 @@
       </div>
     </div>
   </nav>
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalLoginUser" tabindex="-1" aria-labelledby="modalLoginUserLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLoginUserLabel">Título del modal</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="imgModalUser">
+          <img [src]="srcSession" alt="" *ngIf="userLogin != ''" class="imgSession">
+        </div>
+        <div class="d-flex justify-content-around">
+          <h2 *ngIf="userLogin != ''">{{userLogin}}</h2>
+          <button class="btn btn-primary" type="button" *ngIf="userLogin != ''" (click)="editUser()">EditarUser</button>
+          <button class="btn btn-secondary" type="submit" *ngIf="userLogin != ''" (click)="logOut()" data-bs-dismiss="modal">LogOut</button>
+        </div>
+        <hr>
+        <div *ngIf="editU === true" class="editU">
+          <form (ngSubmit)="reqUser(f)" #f="ngForm">
+            <h5>Nombre de usuario: {{userLogin}}</h5>
+            <label for="pass">Ingrese su contraseña: </label>
+            <input type="password" id="pass" name="password" [(ngModel)]="listUser.password">
+            <button type="submit" class="btn btn-primary" *ngIf="!loader">Enviar</button>
+          </form>
+        </div>
+        <div class="spinner-border text-primary" role="status" *ngIf="loader">
+          <span class="visually-hidden">Cargando...</span>
+        </div>
+
+        <div *ngIf="editForm === true && userEdit">
+          <input type="file" (change)="uploadImage($event)">
+          <form (ngSubmit)="upload(e)" #e="ngForm"  >
+              <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Id de usuario</label>
+                  <h5>{{userEdit._id}}</h5>
+              </div>
+              <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Nombre de usuario</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="nameUser" [(ngModel)]="userEdit.nameUser" value="{userEdit.nameUser}">
+              </div>
+              <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                  <input type="text" class="form-control" id="exampleInputPassword1" name="password" [(ngModel)]="userEdit.password" value="{userEdit.password}">
+              </div>
+              <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" [(ngModel)]="userEdit.email"  value="{userEdit.email}">
+              </div>
+              <button type="submit" class="btn btn-primary">Enviar</button>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Guardar cambios</button>
+      </div>
+    </div>
+  </div>
+</div>

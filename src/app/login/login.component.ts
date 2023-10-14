@@ -31,9 +31,11 @@ export class LoginComponent {
     console.log("Envio del formulario");
     this.msgErr = "";
     this.loader = true;
-    this.peopleService.login(this.listUser).subscribe(rt=> 
-        this.sessionService.setToken(rt)
-    );
+    this.peopleService.login(this.listUser).subscribe((rt)=>{
+      this.sessionService.setToken(rt);
+      console.log(rt);
+      
+    });
   }
 
   ngOnInit(){

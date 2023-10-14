@@ -3,6 +3,7 @@ import { Rt } from './rt';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 import { Storage,ref, listAll, getDownloadURL } from '@angular/fire/storage';
+import { People } from './people';
 
 @Injectable({
   providedIn: 'root'
@@ -64,6 +65,16 @@ export class SessionService {
   redirect(){
     this.router.navigate(['/inicio']);
   }
+
+
+  getUser(rt:Rt | any) : People | null{
+    if(rt.status === 200){
+      let us: People = {nameUser : rt.data.nameUser, password : rt.data.password, role : rt.data.role, _id : rt.data._id, email : rt.data.email};
+      return us;
+    }
+    return null;
+  }
+
 
   setToken(rt:Rt | any){
     if(rt.status === 200){
