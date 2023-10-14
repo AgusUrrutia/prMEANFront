@@ -22,6 +22,10 @@
           </li>
         </ul>
         <button class="btn btn-outline-light" type="submit" *ngIf="userLogin != ''" (click)="logOut()" >LogOut</button>
+        <button class="btn btn-outline-light" type="submit" *ngIf="userLogin != ''">
+          <img src="../images/usuario.png" *ngIf="userLogin != ''"alt="">
+        </button>
+        
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
           <button class="btn btn-outline-light" type="submit">Buscar</button>

@@ -15,7 +15,7 @@
         <td>
           <button type="button" class="btn btn-success" *ngIf="people.role !== 'Admin'">Hacer Admin</button>
           <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="completeEdit(people._id)">Editar</button>
-          <button type="button" class="btn btn-danger">Eliminar</button>
+          <button type="button" class="btn btn-danger" (click)="deleteUser(people._id)">Eliminar</button>
         </td>
       </tr>
     </tbody>
@@ -43,7 +43,7 @@
               <label for="exampleInputPassword1" class="form-label">Contraseña</label>
               <input type="text" class="form-control" id="exampleInputPassword1" name="password" [(ngModel)]="listUser.password" value="listUser.password">
           </div>
-          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Enviar</button>
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" (click)="editUser(listUser)">Enviar</button>
       </form>
       </div>
     </div>

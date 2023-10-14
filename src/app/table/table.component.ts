@@ -31,7 +31,25 @@ export class TableComponent {
     let people = this.RT.find(p => p._id === id);
     this.listUser = people;
   }
+  editUser(listUser: People){
+    
+    this.peopleService.editUser(listUser).subscribe((res)=> {  
+      console.log(res);
+      this.RT = this.RT.filter(peo => peo._id !== listUser._id);
+      this.RT.push(listUser);
+    })
+  }
 
+  deleteUser(id: string){
+    let people = this.RT.find(p => p._id === id);
+    this.peopleService.deleteUser(id).subscribe((res)=> {  
+      console.log(res);
+      this.RT = this.RT.filter(peo => peo._id !== id);
+      if(people != undefined){
+        this.peopleService.deleteImage(people.nameUser);
+      }
+    });
+  }
   
 
   ngOnInit(): void {
