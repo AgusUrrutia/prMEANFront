@@ -6,6 +6,8 @@ import { ErrPageComponent } from './err-page/err-page.component';
 import { AuthGuard } from './guards/auth.guard';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
+import { AboutComponent } from './about/about.component';
+import { SubjectComponent } from './subject/subject.component';
 
 
 const routes: Routes = [
@@ -34,9 +36,20 @@ const routes: Routes = [
   component:HomeComponent
 },
 {
+  path: 'about', 
+  component:AboutComponent
+},
+
+{
+  path: 'materias/:subject',
+  component:SubjectComponent
+},
+
+{
   path: '**', 
   component:ErrPageComponent
 }
+
 ];
 
 @NgModule({

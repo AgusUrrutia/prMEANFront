@@ -19,7 +19,7 @@ export class ServicePeopleService {
     private http: HttpClient,
     private storage: Storage
   ) {
-    this.URL = 'https://prmean-dev.3.us-1.fl0.io';
+    this.URL = 'https://prmean.onrender.com';
    }
 
   getPeople() : Observable<People[]>{

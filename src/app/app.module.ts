@@ -16,6 +16,10 @@ import { HomeComponent } from './home/home.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { ContentComponent } from './home/content/content.component';
+import { FooterComponent } from './footer/footer.component';
+import { AboutComponent } from './about/about.component';
+import { SubjectComponent } from './subject/subject.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,11 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     LoginComponent,
     RegisterComponent,
     ErrPageComponent,
-    HomeComponent
+    HomeComponent,
+    ContentComponent,
+    FooterComponent,
+    AboutComponent,
+    SubjectComponent
   ],
   imports: [
     BrowserModule,

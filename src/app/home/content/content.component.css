@@ -1,0 +1,14 @@
+.content{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.item-content{
+    text-align: center;
+    color: aliceblue;
+    font-size: 30px;
+    width: 400px;
+    height: 200px;
+    background-color: rgb(138, 70, 202);
+}
