@@ -9,7 +9,7 @@ import { Material } from '../material';
   styleUrls: ['./subject.component.css']
 })
 export class SubjectComponent {
-  private materials : any;
+  public materials : Material[] = [];
   constructor( 
     private route: ActivatedRoute,
     private srvMaterialSubject : ServiceMaterialSubjectService
@@ -23,7 +23,7 @@ export class SubjectComponent {
       const id = this.route.snapshot.params['subject'];
       this.subject = id;
       console.log(id);
-      this.materials = this.srvMaterialSubject.get(10,this.subject).subscribe(subject => console.log(subject));
+      this.srvMaterialSubject.get(10,this.subject).subscribe(subject => this.materials = subject);
       console.log(this.materials);
     
   }
