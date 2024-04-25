@@ -1,0 +1,11 @@
+.container{
+    display: flex;
+}
+
+.card{
+    width: 30%;
+}
+.fila-sep{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

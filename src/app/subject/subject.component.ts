@@ -10,6 +10,7 @@ import { Material } from '../material';
 })
 export class SubjectComponent {
   public materials : Material[] = [];
+  public counter : number = 0;
   constructor( 
     private route: ActivatedRoute,
     private srvMaterialSubject : ServiceMaterialSubjectService
